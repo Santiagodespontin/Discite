@@ -1,4 +1,4 @@
-@extends('Template.basic')
+@extends('Template.basicg')
 @section('content')
 
         <section class="faq">

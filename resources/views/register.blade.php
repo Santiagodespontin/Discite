@@ -1,8 +1,6 @@
-<?php
-require_once 'helpers.php';
-require_once 'controllers/filesController.php';
-
-if ($_POST && $_FILES)
+@extends('Template.basic')
+@section('content')
+{{-- @if ($_POST && $_FILES)
 {
     $oldUser = $db->bringUser($_POST['email']);
     if ($oldUser===null){
@@ -28,18 +26,16 @@ if (check()) {
 }
 
 ?>
-<?php require_once '_header.php'?>
-<?php
+{{--
 if(isset($errors) && count($errors) > 0): ?>
 <div>
     <ul>
-        <?php foreach ($errors as $value): ?>
-            <li><?= $value ?></li>
-        <?php endforeach; ?>
+         foreach ($errors as $value): ?>
+            <li></li>
+         endforeach; ?>
     </ul>
 </div>
-<?php endif; ?>
-
+ endif; ?> --}}
 
 <div class="login-form">
     <form action="" method="post" enctype="multipart/form-data">
@@ -63,5 +59,4 @@ if(isset($errors) && count($errors) > 0): ?>
         <input type="submit">
     </form>
 </div>
-
-<?php require_once '_footer.php'?>
+@endsection
