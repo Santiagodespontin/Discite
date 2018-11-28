@@ -1,4 +1,5 @@
-@extends('Template.basic')
+@extends('layouts.app')
+
 @section('content')
 <section class="banner">
     <div></div>

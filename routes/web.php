@@ -19,3 +19,7 @@ Route::get('/register','WebController@register');
 Route::post('/register','WebController@faq');
 Route::get('/login','WebController@login');
 Route::post('/login','WebController@faq');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

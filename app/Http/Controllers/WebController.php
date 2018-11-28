@@ -9,7 +9,6 @@ class WebController extends Controller
     public function index(){
         return view('index');
     }
-
     public function faq(){
         return view('faq');
     }
@@ -19,7 +18,4 @@ class WebController extends Controller
     public function login(){
         return view('login');
     }
-
-
-
 }
