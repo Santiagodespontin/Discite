@@ -18,9 +18,22 @@
                     <li><a class="nav-a" href="/">Discite</a></li>
                 </div>
                 <div>
-                    <li id="registro"><a class="nav-a" href="register">Register</a></li>
+                    @guest
+                    <li id="registro">
+                        <a class="nav-a" href="{{ route('register') }}">Register</a>
+                    </li>
                     <p>|</p>
-                    <li id="registro"><a class="nav-a" href="login">Login</a></li>
+                    <li id="registro">
+                        <a class="nav-a" href="{{ route('login') }}">Login</a>
+                    </li>
+                    @else
+                    <li id="registro">
+                        <a class="nav-a" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                    </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    @endguest
                 </div>
             </ul>
         </nav>
