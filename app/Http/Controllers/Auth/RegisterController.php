@@ -54,7 +54,6 @@ class RegisterController extends Controller
             'birthdate' => 'required',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'profilePic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
 
@@ -66,15 +65,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // $path = $request->file('profilePic')->storePublicly('public/posters');
-        // $path = str_replace('public', '/storage', $path);
         return User::create([
             'name' => $data['name'],
             'lastName' => $data['lastName'],
             'birthdate' => $data['birthdate'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            // 'profilePic'=> $path
         ]);
     }
 }

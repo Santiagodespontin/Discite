@@ -36,11 +36,6 @@
         @if ($errors->has('password_confirmation'))
             <span class="text-red">{{ $errors->first('password_confirmation') }}</span><br>
         @endif
-        <label for="">Foto de perfil:</label>
-        <input type="file" name="profilePic">
-        @if ($errors->has('profilePic'))
-            <span class="text-red">{{ $errors->first('profilePic') }}</span><br>
-        @endif
         <input type="submit">
     </form>
 </div>
