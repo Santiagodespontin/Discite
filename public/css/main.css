@@ -293,7 +293,7 @@ section.faq > section > article > h3.pregunta {
     width: 85%;
 }
 
-.login-form>form>input[type=text],.login-form>form>input[type=password]  {
+.login-form>form>input[type=text],.login-form>form>input[type=password],.login-form>form>input[type=date],.login-form>form>input[type=email],.login-form>form>input[type=file] {
     background-color: #fff;
     color: #000;
     padding: 8px;
@@ -367,6 +367,10 @@ article.perfil>ul{
 .nombre-de-pag{
     font-size: 1.5em;
     font-weight: bold;
+}
+
+.text-red {
+    color: red;
 }
 
 
