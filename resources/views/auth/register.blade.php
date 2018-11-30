@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="login-form">
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -14,11 +15,6 @@
         <input type="text" name="lastName" value="<?= old('lastName') ?>">
         @if ($errors->has('lastName'))
             <span>{{ $errors->first('lastName') }}</span><br>
-        @endif
-        <label for="">Username:</label>
-        <input type="text" name="username" value="<?= old('username') ?>">
-        @if ($errors->has('username'))
-            <span>{{ $errors->first('username') }}</span><br>
         @endif
         <label for="">Email:</label>
         <input type="email" name="email" value="<?= old('email') ?>">
@@ -48,5 +44,4 @@
         <input type="submit">
     </form>
 </div>
-
 @endsection

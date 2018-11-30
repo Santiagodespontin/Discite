@@ -16,10 +16,9 @@
 Route::get('/','WebController@index');
 Route::get('/faq','WebController@faq');
 Route::get('/register','WebController@register');
-Route::post('/register','WebController@faq');
 Route::get('/login','WebController@login');
-Route::post('/login','WebController@faq');
+Route::get('/profile','UserController@profile');
+Route::post('profile', 'UserController@update_profilePic');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'WebController@index')->name('home');
