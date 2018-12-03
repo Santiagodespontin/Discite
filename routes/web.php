@@ -2,6 +2,7 @@
 
 // use Symfony\Component\Routing\Annotation\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,9 @@ Route::get('/login','WebController@login');
 Route::prefix('profile')->name('profile.')->group(function() {
     Route::get('/','UserController@show')->name('show');
     Route::post('/', 'UserController@update')->name('update');
+});
+Route::get('/profesores', function() {
+    return view('professors');
 });
 
 Auth::routes();

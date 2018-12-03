@@ -454,4 +454,22 @@ article.perfil>ul{
 
     /* Fin login */
 }
+/* Profesores por materias */
+.professors>li{
+    display: grid;
+    justify-content: center;
+    width: 30vw;
+    background-color: #f0f0f0;
+    margin: 27px auto;
+    border-radius: 11px;
+    padding: 25px 0px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+.professors{
+    display: flex;
+    justify-content: space-around;
+    padding: unset;
+    flex-wrap: wrap
+}
 

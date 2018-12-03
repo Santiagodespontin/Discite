@@ -27,9 +27,10 @@
                         <a class="nav-a" href="{{ route('login') }}">Login</a>
                     </li>
                     @else
-                <li><a class="nav-a" href="{{ route('profile.show') }}">{{Auth::user()->name}}</a></li>
+                    <li><img src="/images/users/{{Auth::user()->profilePic}}" style="width:32px;  height:32px; border-radius:50%"></li>
+                    <li><a class="nav-a" href="{{ route('profile.show') }}">{{Auth::user()->name}}</a></li>
                     <li id="registro">
-                        <a class="nav-a" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                        <a class="nav-a" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">| Logout</a>
                     </li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
