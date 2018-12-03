@@ -8,22 +8,34 @@ use Auth;
 use Image;
 class UserController extends Controller
 {
-    public function profile(){
-        $user = Auth::user();
-        return view('profile')->with('user',$user);
-        // return view('profile' ,array('user' => Auth::user()));
+    public function show()
+    {
+        return view('profile');
     }
 
-    public function update_profilePic(Request $request){
-        if ($request->hasFile('profilePic')){
-            $profilePic = $request->file('profilePic');
-            $filename = time().".".$profilePic->getClientOriginalExtension();
-            Image::make($profilePic)->resize(300,300)->save( public_path('/img/user' . $filename));
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'birthdate' => 'required',
+            'profilePic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-            $user = Auth::user();
-            $user->profilePic = $filename;
-            $user -> save();
+        $request->user()->name = $request->input('name');
+        $request->user()->lastname = $request->input('lastName');
+        $request->user()->birthdate = $request->input('birthdate');
+
+        if ($request->hasFile('profilePic')) {
+            $image = $request->file('profilePic');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/users');
+            $image->move($destinationPath, $name);
+            $request->user()->profilePic = $name;
         }
-        return view('profile');
+
+        $request->user()->save();
+
+        return back()->with('success', 'Editado correctamente.');
     }
 }

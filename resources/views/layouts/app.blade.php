@@ -27,7 +27,7 @@
                         <a class="nav-a" href="{{ route('login') }}">Login</a>
                     </li>
                     @else
-                <li><a class="nav-a" href="{{url('profile')}}">{{Auth::user()->name}}</a></li>
+                <li><a class="nav-a" href="{{ route('profile.show') }}">{{Auth::user()->name}}</a></li>
                     <li id="registro">
                         <a class="nav-a" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                     </li>
