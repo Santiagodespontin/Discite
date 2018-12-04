@@ -22,11 +22,11 @@
             <span class="text-red">{{ $errors->first('email') }}</span><br>
         @endif
         <label for="">Que Sos?</label>
-        <select name="rol">
-        <option  value="0">Alumno</option>
-        <option value="1">Profesor</option>
+        <select name="role">
+            <option value="0">Alumno</option>
+            <option value="1">Profesor</option>
         </select><br>
-        @if ($errors->has('rol'))
+        @if ($errors->has('role'))
             <span class="text-red">{{ $errors->first('email') }}</span><br>
         @endif
         <label for="">Fecha de Nacimiento:</label>

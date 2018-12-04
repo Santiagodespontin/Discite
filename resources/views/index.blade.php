@@ -5,16 +5,9 @@
     <div></div>
     <form action="" method="POST">
         <select name="materia" id="">
-            <option value="Matematicas">Matematicas</option>
-            <option value="Historia">Historia</option>
-            <option value="Geografia">Geografia</option>
-            <option value="Economia">Economia</option>
-            <option value="Teoria Contable">Teoria Contable</option>
-            <option value="Dibujo">Dibujo</option>
-            <option value="Ingles">Ingles</option>
-            <option value="Frances">Frances</option>
-            <option value="Canto">Canto</option>
-            <option value="Baile">Baile</option>
+            @foreach (App\Category::all() as $category)
+            <option value="Matematicas">{{ $category->name }}</option>
+            @endforeach
         </select>
         <input type="text" placeholder="¿Dónde estás buscando?">
         <input type="submit" value="Buscar">
@@ -37,16 +30,11 @@
 </section>
 <section class="categoria">
     <h3>Busca por categoria</h3>
-    <article> <a href="#">Matematicas</a> </article>
-    <article> <a href="#">Historia</a> </article>
-    <article> <a href="#">Geografia</a> </article>
-    <article> <a href="#">Economia</a> </article>
-    <article> <a href="#">Teoria Contable</a> </article>
-    <article> <a href="#">Dibujo</a> </article>
-    <article> <a href="#">Ingles</a> </article>
-    <article> <a href="#">Frances</a> </article>
-    <article> <a href="#">Canto</a> </article>
-    <article> <a href="#">Baile</a> </article>
+    @foreach (App\Category::all() as $category)
+    <article>
+        <a href="{{ url('/professor?q='.$category->name) }}">{{ $category->name }}</a> 
+    </article>
+    @endforeach
 </section>
 @endsection
 

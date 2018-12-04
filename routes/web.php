@@ -22,5 +22,13 @@ Route::prefix('profile')->name('profile.')->group(function() {
     Route::post('/', 'UserController@update')->name('update');
 });
 
+Route::prefix('professor')->name('professor.')->group(function() {
+    Route::get('/', 'ProfessorController@index')->name('index');
+    Route::get('/{professor}', 'ProfessorController@show')->name('show');
+    Route::post('/category', 'ProfessorController@addCategory')->name('category.add');
+    Route::delete('/category/{category}', 'ProfessorController@deleteCategory')->name('category.delete');
+});
+
+
 Auth::routes();
 Route::get('/home', 'WebController@index')->name('home');
