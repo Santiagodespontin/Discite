@@ -2,8 +2,7 @@
 
 @section('content')
 <article class="perfil">
-
-<h1>Bienvenido</h1>
+    <h1>Bienvenido {{ Auth::user()->name }}</h1>
     <ul>
         <li>
             <img src="/images/users/{{Auth::user()->profilePic}}" style="widht:150px;  heigth:150px; border-radius:50%" >
@@ -15,34 +14,52 @@
         @csrf
         <h5 style="margin: 5px 0px;">Nombre: {{Auth::user()->name ." " . Auth::user()->lastname}}</h5>
         <h5 style="margin: 5px 0px;">Email: {{Auth::user()->email}}</h5>
-        <h5 style="margin: 5px 0px 25px;">Fecha de nacimiento: {{Auth::user()->birthdate}} </h5>
+        <h5 style="margin: 5px 0px;">Fecha de nacimiento: {{Auth::user()->birthdate}} </h5>
+        @if(Auth::user()->role == 0)
+        <h5 style="margin: 5px 0px 25px;">Rol: Alumno</h5>
+        @elseif(Auth::user()->role == 1)
+        <h5 style="margin: 5px 0px 25px;">Rol: Profesor</h5>
+        @else
+        <h5 style="margin: 5px 0px 25px;">Rol: Like a Boss</h5>
+        @endif
+        
         <label for="name">Nombre:</label>
         <input type="text" name="name" value="{{ old('name') ? old('name') : Auth::user()->name }}">
-        @if(Auth::user()->role == 0)
-            <h5 style="margin: 5px 0px;">Rol: Alumno</h5>
-        @elseif(Auth::user()->role == 1)
-            <h5 style="margin: 5px 0px;">Rol: Profesor</h5>
-        @else
-            <h5 style="margin: 5px 0px;">Rol: Like a Boss</h5>
-        @endif
-
         @if ($errors->has('name'))
-            <span class="text-red">{{ $errors->first('name') }}</span><br>
+        <span class="text-red">{{ $errors->first('name') }}</span><br>
         @endif
         <label for="">Apellido:</label>
         <input type="text" name="lastName" value="{{ old('lastName') ? old('lastName') : Auth::user()->lastname }} ">
         @if ($errors->has('lastName'))
-            <span class="text-red">{{ $errors->first('lastName') }}</span><br>
+        <span class="text-red">{{ $errors->first('lastName') }}</span><br>
         @endif
         <label for="">Fecha de nacimiento:</label>
         <input type="date" name="birthdate" value="{{ old('birthdate') ? old('birthdate') : Auth::user()->birthdate }} ">
         @if ($errors->has('birthdate'))
-            <span class="text-red">{{ $errors->first('birthdate') }}</span><br>
+        <span class="text-red">{{ $errors->first('birthdate') }}</span><br>
+        @endif
+        @if(Auth::user()->role == 1)
+        <label for="zona">Zona:</label>
+        <select name="zona">
+            <option value="0" {{ (Auth::user()->zona == 0) ? 'selected' : '' }}>Zona Norte</option>
+            <option value="1" {{ (Auth::user()->zona == 1) ? 'selected' : '' }}>Zona Sur</option>
+            <option value="2" {{ (Auth::user()->zona == 2) ? 'selected' : '' }}>Zona Oeste</option>
+            <option value="3" {{ (Auth::user()->zona == 3) ? 'selected' : '' }}>Zona Este</option>
+            <option value="4" {{ (Auth::user()->zona == 4) ? 'selected' : '' }}>Capital federal</option>
+        </select>
+        @if ($errors->has('zona'))
+        <span class="text-red">{{ $errors->first('zona') }}</span><br>
+        @endif
+        <label for="about">Sobre mi</label>
+        <textarea name="about" rows="5">{{ old('about') ? old('about') : Auth::user()->about }}</textarea>
+        @if ($errors->has('about'))
+        <span class="text-red">{{ $errors->first('about') }}</span><br>
+        @endif
         @endif
         <label for="">Foto de perfil:</label>
         <input type="file" name="profilePic" value="{{ old('birthdate') }}">
         @if ($errors->has('profilePic'))
-            <span class="text-red">{{ $errors->first('profilePic') }}</span><br>
+        <span class="text-red">{{ $errors->first('profilePic') }}</span><br>
         @endif
         <input type="submit">
     </form>
@@ -77,4 +94,32 @@
 </div>
 @endif
 
+@endsection
+
+
+@section('js')
+    <script>
+ 
+//     swal(
+//   'Good job!',
+//   'You clicked the button!',
+//   'success'
+// )
+
+    // fetch('', {
+    //     method: "POST",
+    //     body: '',
+    // }).then((response) => {
+    //     return JSON.parse(response);
+    // }).then((json) => {
+    //     if (json.status == 'ok') {
+
+    //     } else if (json.status == 'error') {
+
+    //     }
+    // }).catch((error) => {
+
+    // })
+    
+    </script>
 @endsection

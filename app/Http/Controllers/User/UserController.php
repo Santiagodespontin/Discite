@@ -19,12 +19,19 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'birthdate' => 'required',
-            'profilePic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'profilePic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $request->user()->name = $request->input('name');
         $request->user()->lastname = $request->input('lastName');
         $request->user()->birthdate = $request->input('birthdate');
+
+        if (isset($request['zona'])) {
+            $request->user()->zona = $request->input('zona');
+        }
+        if (isset($request['about'])) {
+            $request->user()->about = $request->input('about');
+        }
 
         if ($request->hasFile('profilePic')) {
             $image = $request->file('profilePic');

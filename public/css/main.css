@@ -293,7 +293,7 @@ section.faq > section > article > h3.pregunta {
     width: 85%;
 }
 
-.login-form>form>input[type=text],.login-form>form>input[type=password],.login-form>form>input[type=date],.login-form>form>input[type=email],.login-form>form>input[type=file] {
+.login-form>form>input[type=text],.login-form>form>input[type=password],.login-form>form>input[type=date],.login-form>form>input[type=email],.login-form>form>input[type=file],.login-form>form>textarea,.login-form>form>select{
     background-color: #fff;
     color: #000;
     padding: 8px;

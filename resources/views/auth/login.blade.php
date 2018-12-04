@@ -9,13 +9,13 @@
         <label for="">Email:</label>
         <input type="email" name="email" value="<?= old('email'); ?>">
         @if ($errors->has('email'))
-            <span>{{ $errors->first('email') }}</span><br>
+            <span class="text-red">{{ $errors->first('email') }}</span><br>
         @endif
         
         <label for="">Contraseña:</label>
         <input type="password" name="password">
         @if ($errors->has('password'))
-            <span>{{ $errors->first('password') }}</span><br>
+            <span class="text-red">{{ $errors->first('password') }}</span><br>
         @endif
 
         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

@@ -18,25 +18,17 @@ Route::get('/','WebController@index');
 Route::get('/faq','WebController@faq');
 Route::get('/register','WebController@register');
 Route::get('/login','WebController@login');
-Route::prefix('profile')->name('profile.')->group(function() {
+Route::prefix('profile')->name('profile.')->middleware('auth')->group(function() {
     Route::get('/','UserController@show')->name('show');
     Route::post('/', 'UserController@update')->name('update');
-});
-Route::get('/profesores', function() {
-    return view('professors');
-});
-
-Route::get('/profesor', function() {
-    return view('professor');
 });
 
 Route::prefix('professor')->name('professor.')->group(function() {
     Route::get('/', 'ProfessorController@index')->name('index');
     Route::get('/{professor}', 'ProfessorController@show')->name('show');
-    Route::post('/category', 'ProfessorController@addCategory')->name('category.add');
-    Route::delete('/category/{category}', 'ProfessorController@deleteCategory')->name('category.delete');
+    Route::post('/category', 'ProfessorController@addCategory')->name('category.add')->middleware('auth');
+    Route::delete('/category/{category}', 'ProfessorController@deleteCategory')->name('category.delete')->middleware('auth');
 });
 
 
 Auth::routes();
-Route::get('/home', 'WebController@index')->name('home');

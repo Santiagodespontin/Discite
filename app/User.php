@@ -31,4 +31,27 @@ class User extends Authenticatable
     public function categories() {
         return $this->belongsToMany('App\Category');
     }
+
+    public function getZona() {
+        switch ($this->zona) {
+            case 0:
+                return 'Zona Norte';
+            break;
+            case 1:
+                return 'Zona Sur';
+            break;
+            case 2:
+                return 'Zona Oeste';
+            break;
+            case 3:
+                return 'Zona Este';
+            break;
+            case 4:
+                return 'Capital federal';
+            break;
+            default: 
+                return 'Uknown';
+            break;
+        }
+    }
 }

@@ -15,24 +15,31 @@ class ProfessorController extends Controller
      */
     public function index(Request $request)
     {
-
         if (isset($request['q'])) {
             $professors = [];
             $category = Category::where('name', $request['q'])->first();
-            if ($category) {                
-                foreach (User::where('role', 1)->get() as $professor) {
+            if ($category) {
+                if (isset($request['zona'])) {
+                    $profs = User::where('role', 1)->where('zona', $request['zona'])->get();
+                } else {
+                    $profs = User::where('role', 1)->get();
+                }
+                foreach ($profs as $professor) {
                     $hasCategory = $professor->categories->where('id', $category->id);
                     if (!$hasCategory->isEmpty()) {
                         $professors[] = $professor;
                     }
                 }
             }
-
         } else {
-            $professors = User::where('role', 1)->get();
+            if (isset($request['zona'])) {
+                $professors = User::where('role', 1)->where('zona', $request['zona'])->get();
+            } else {
+                $professors = User::where('role', 1)->get();
+            }
         }
         
-        return view('professor')->with('professors', $professors);
+        return view('professors.index')->with('professors', $professors);
     }
 
     /**
@@ -62,9 +69,9 @@ class ProfessorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $professor)
     {
-        //
+        return view('professors.show')->with('professor', $professor);
     }
 
     /**
