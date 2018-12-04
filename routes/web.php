@@ -26,5 +26,9 @@ Route::get('/profesores', function() {
     return view('professors');
 });
 
+Route::get('/profesor', function() {
+    return view('professor');
+});
+
 Auth::routes();
 Route::get('/home', 'WebController@index')->name('home');
