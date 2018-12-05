@@ -1,8 +1,4 @@
 <?php
-
-// use Symfony\Component\Routing\Annotation\Route;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +25,11 @@ Route::prefix('professor')->name('professor.')->group(function() {
     Route::post('/category', 'ProfessorController@addCategory')->name('category.add')->middleware('auth');
     Route::delete('/category/{category}', 'ProfessorController@deleteCategory')->name('category.delete')->middleware('auth');
 });
+Route::get('admin',function(){
+    return view('admin');
+});
+Route::post('admin','CategoryController@createCategory')->name('newCat');
+Route::delete('admin','CategoryController@deleteCategory')->name('delCat');
 
 
 Auth::routes();

@@ -41,7 +41,9 @@
         </nav>
     </header>
     <main>
+        {{-- <marquee scrollamount="100"> --}}
         @yield('content')
+        {{-- </marquee > --}}
 </main>
 <footer>
     <ul>

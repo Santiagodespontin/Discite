@@ -38,7 +38,7 @@ class ProfessorController extends Controller
                 $professors = User::where('role', 1)->get();
             }
         }
-        
+
         return view('professors.index')->with('professors', $professors);
     }
 
@@ -117,4 +117,5 @@ class ProfessorController extends Controller
         $request->user()->categories()->attach($request->input('category'));
         return back();
     }
+    
 }
