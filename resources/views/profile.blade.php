@@ -95,31 +95,3 @@
 @endif
 
 @endsection
-
-
-@section('js')
-    <script>
- 
-//     swal(
-//   'Good job!',
-//   'You clicked the button!',
-//   'success'
-// )
-
-    // fetch('', {
-    //     method: "POST",
-    //     body: '',
-    // }).then((response) => {
-    //     return JSON.parse(response);
-    // }).then((json) => {
-    //     if (json.status == 'ok') {
-
-    //     } else if (json.status == 'error') {
-
-    //     }
-    // }).catch((error) => {
-
-    // })
-    
-    </script>
-@endsection
