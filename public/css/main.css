@@ -278,6 +278,7 @@ section.faq > section > article > h3.pregunta {
 
 .login-form {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     width: 80vw;
     background-color: #f0f0f0;
