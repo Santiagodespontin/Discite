@@ -25,8 +25,10 @@ Route::prefix('profile')->name('profile.')->middleware('auth')->group(function()
 
 Route::prefix('professor')->name('professor.')->group(function() {
     Route::get('/', 'ProfessorController@index')->name('index');
+    Route::get('/calendar', 'ProfessorController@calendar')->name('calendar');
     Route::get('/{professor}', 'ProfessorController@show')->name('show');
     Route::post('/category', 'ProfessorController@addCategory')->name('category.add')->middleware('auth');
+    Route::post('/{professor}/Booking', 'ProfessorController@booking')->name('booking');
     Route::delete('/category/{category}', 'ProfessorController@deleteCategory')->name('category.delete')->middleware('auth');
 });
 
