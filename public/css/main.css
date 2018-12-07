@@ -280,7 +280,7 @@ section.faq > section > article > h3.pregunta {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 80vw;
+    width: 59vw;
     background-color: #f0f0f0;
     margin: 27px auto;
     border-radius: 11px;
@@ -374,6 +374,14 @@ article.perfil>ul{
     color: red;
 }
 
+.organizadorDeMaterias{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 30vw;
+    flex-wrap: wrap;
+}
+
 
 @media only screen and (min-width: 600px) {
 
@@ -449,11 +457,15 @@ article.perfil>ul{
 
     /* Login */
 
-    .login-form {
-        width:480px;
-    }
 
     /* Fin login */
+    .organizadorDeMaterias{
+
+        flex-direction: row;
+        width: 60vw;
+        justify-content: space-between;
+
+    }
 }
 /* Profesores por materias */
 .professors>li{
@@ -487,12 +499,7 @@ article.perfil>ul{
     padding: 2vw 0 0;
 
 }
-.organizadorDeMaterias{
-    display: flex;
-    justify-content: space-around;
-    width: 30vw;
-    flex-wrap: wrap;
-}
+
 .cajaMaterias{
     width: 7.5vw;
 }
