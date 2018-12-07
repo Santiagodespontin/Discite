@@ -1,5 +1,6 @@
 <?php
 
+use App\Booking;
 use App\User;
 use App\Comment;
 use Illuminate\Http\Request;
@@ -51,6 +52,10 @@ Route::post('/comment', function(Request $request) {
 
 Route::get('/comment/{user}', function(User $user) {
     $comments = Comment::where('professor_id', $user->id)->get();
+    $comments->map(function ($comment) {
+        return $comment['user'] = $comment->user;
+    });
+
     $data = [
         'status' => 'ok',
         'data' => [
@@ -58,4 +63,9 @@ Route::get('/comment/{user}', function(User $user) {
         ],
     ];
     return response()->json($data);
+});
+
+Route::get('/professors/calendar/{user}', function(User $user) {
+    $bookings = Booking::where('professor_id', $user->id)->get();
+    return response()->json($bookings);
 });

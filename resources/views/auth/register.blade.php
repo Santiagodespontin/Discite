@@ -23,14 +23,14 @@
         @endif
         <label for="">Que Sos?</label>
         <select name="role">
-            <option value="0">Alumno</option>
-            <option value="1">Profesor</option>
+            <option value="0" {{ (old('role') == '0') ? 'selected' : '' }}>Alumno</option>
+            <option value="1" {{ (old('role') == '1') ? 'selected' : '' }}>Profesor</option>
         </select><br>
         @if ($errors->has('role'))
             <span class="text-red">{{ $errors->first('email') }}</span><br>
         @endif
         <label for="">Fecha de Nacimiento:</label>
-        <input type="date" name="birthdate" value="{{ old('birthdate')}} ">
+        <input type="date" name="birthdate" value="{{ old('birthdate')}}">
         @if ($errors->has('birthdate'))
             <span class="text-red">{{ $errors->first('birthdate') }}</span><br>
         @endif

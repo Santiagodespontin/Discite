@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/main.css')}}" />
+    @yield('css')
 </head>
 <body>
     <header>
@@ -27,8 +28,22 @@
                         <a class="nav-a" href="{{ route('login') }}">Login</a>
                     </li>
                     @else
-                    <li><img src="/images/users/{{Auth::user()->profilePic}}" style="width:32px;  height:32px; border-radius:50%"></li>
-                    <li><a class="nav-a" href="{{ route('profile.show') }}">{{Auth::user()->name}}</a></li>
+                    @if (Auth::user()->role == 0)
+                        <li>
+                            <a class="nav-a" href="/booking">Reservas |</a>
+                        </li>
+                    @endif
+                    @if (Auth::user()->role == 1)
+                        <li>
+                            <a class="nav-a" href="/professor/calendar">Calendario |</a>
+                        </li>
+                    @endif
+                    @if (Auth::user()->role == 2)
+                        <li>
+                            <a class="nav-a" href="/admin">Admin |</a>
+                        </li>
+                    @endif
+                    <li><a class="nav-a" href="{{ route('profile.show') }}"><img src="/images/users/{{Auth::user()->profilePic}}" style="width:32px;  height:32px; border-radius:50%"></a></li>
                     <li id="registro">
                         <a class="nav-a" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">| Logout</a>
                     </li>

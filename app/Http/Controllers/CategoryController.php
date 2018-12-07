@@ -7,6 +7,11 @@ use App\Category;
 
 class CategoryController extends Controller
 {
+
+    public function index() {
+        return view('admin');
+    }
+
     public function createCategory(Request $request)
     {
          Category::create([

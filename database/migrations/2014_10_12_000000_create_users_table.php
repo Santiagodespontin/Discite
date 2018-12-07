@@ -21,6 +21,9 @@ class CreateUsersTable extends Migration
             $table->integer('role');
             $table->integer('zona')->default(0);
             $table->string('about')->default('');
+            $table->integer('price')->default(0);
+            $table->time('start')->nullable();
+            $table->time('end')->nullable();
             $table->date('birthdate');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

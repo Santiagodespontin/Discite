@@ -21,15 +21,19 @@ Route::prefix('profile')->name('profile.')->middleware('auth')->group(function()
 
 Route::prefix('professor')->name('professor.')->group(function() {
     Route::get('/', 'ProfessorController@index')->name('index');
+    Route::get('/calendar', 'ProfessorController@calendar')->name('calendar');
     Route::get('/{professor}', 'ProfessorController@show')->name('show');
     Route::post('/category', 'ProfessorController@addCategory')->name('category.add')->middleware('auth');
+    Route::post('/{professor}/Booking', 'ProfessorController@booking')->name('booking');
     Route::delete('/category/{category}', 'ProfessorController@deleteCategory')->name('category.delete')->middleware('auth');
 });
-Route::get('admin',function(){
-    return view('admin');
-});
+
+Route::get('admin', 'CategoryController@index');
 Route::post('admin','CategoryController@createCategory')->name('newCat');
 Route::delete('admin','CategoryController@deleteCategory')->name('delCat');
 
+Route::get('/booking', function () {
+    return view('bookings');
+});
 
 Auth::routes();

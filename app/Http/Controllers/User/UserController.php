@@ -20,6 +20,7 @@ class UserController extends Controller
             'lastName' => 'required|string|max:255',
             'birthdate' => 'required',
             'profilePic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'price' => 'required|numeric',
         ]);
 
         $request->user()->name = $request->input('name');
@@ -31,6 +32,15 @@ class UserController extends Controller
         }
         if (isset($request['about'])) {
             $request->user()->about = $request->input('about');
+        }
+        if (isset($request['price'])) {
+            $request->user()->price = $request->input('price');
+        }
+        if (isset($request['start'])) {
+            $request->user()->start = $request->input('start') . ":00";
+        }
+        if (isset($request['end'])) {
+            $request->user()->end = $request->input('end') . ":00";
         }
 
         if ($request->hasFile('profilePic')) {

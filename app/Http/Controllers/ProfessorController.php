@@ -1,7 +1,9 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
+use App\Booking;
 use App\Category;
 use App\User;
 use Illuminate\Http\Request;
@@ -117,5 +119,19 @@ class ProfessorController extends Controller
         $request->user()->categories()->attach($request->input('category'));
         return back();
     }
-    
+
+    public function booking(Request $request, User $professor) {       
+        Booking::create([
+            'title' => 'Reserva de '.$request->user()->name,
+            'start' => $request->day . ' ' . $request->time . ':00',
+            'end' => $request->day . ' ' . ((int)$request->time + (int)$request->count) . ':00',
+            'user_id' => $request->user()->id,
+            'professor_id' => $professor->id,
+        ]);
+        return redirect('/booking');
+    }
+
+    public function calendar(Request $request) {
+        return view('professors.calendar');
+    }
 }
