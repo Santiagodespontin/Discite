@@ -49,7 +49,7 @@ class User extends Authenticatable
             case 4:
                 return 'Capital federal';
             break;
-            default: 
+            default:
                 return 'Uknown';
             break;
         }
