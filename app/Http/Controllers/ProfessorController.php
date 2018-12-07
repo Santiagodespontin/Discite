@@ -40,7 +40,7 @@ class ProfessorController extends Controller
                 $professors = User::where('role', 1)->get();
             }
         }
-        
+
         return view('professors.index')->with('professors', $professors);
     }
 
@@ -128,7 +128,7 @@ class ProfessorController extends Controller
             'user_id' => $request->user()->id,
             'professor_id' => $professor->id,
         ]);
-        return back();
+        return redirect('/booking');
     }
 
     public function calendar(Request $request) {

@@ -278,6 +278,7 @@ section.faq > section > article > h3.pregunta {
 
 .login-form {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     width: 80vw;
     background-color: #f0f0f0;
@@ -449,7 +450,7 @@ article.perfil>ul{
     /* Login */
 
     .login-form {
-        width: 35%;
+        width:480px;
     }
 
     /* Fin login */
@@ -508,7 +509,7 @@ article.perfil>ul{
     width: 60vw;
     margin: 0 20vw;
     padding: 10px;
-    background-color: #d4d0d0; 
+    background-color: #d4d0d0;
 }
 .left{
     justify-content: left;
@@ -516,4 +517,11 @@ article.perfil>ul{
 
 /* Fin de profesor vista alumno*/
 
+@media only screen and (min-width: 1000px){
+
+    .login-form {
+        width:60vw;
+    }
+
+}
 

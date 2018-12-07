@@ -28,18 +28,22 @@
                         <a class="nav-a" href="{{ route('login') }}">Login</a>
                     </li>
                     @else
+                    @if (Auth::user()->role == 0)
+                        <li>
+                            <a class="nav-a" href="/booking">Reservas |</a>
+                        </li>
+                    @endif
                     @if (Auth::user()->role == 1)
                         <li>
                             <a class="nav-a" href="/professor/calendar">Calendario |</a>
                         </li>
                     @endif
-                    @if (Auth::user()->role == 3)
+                    @if (Auth::user()->role == 2)
                         <li>
-                            <a class="nav-a" href="/professor/calendar">Calendario |</a>
+                            <a class="nav-a" href="/admin">Admin |</a>
                         </li>
                     @endif
-                    <li><img src="/images/users/{{Auth::user()->profilePic}}" style="width:32px;  height:32px; border-radius:50%"></li>
-                    <li><a class="nav-a" href="{{ route('profile.show') }}">{{Auth::user()->name}}</a></li>
+                    <li><a class="nav-a" href="{{ route('profile.show') }}"><img src="/images/users/{{Auth::user()->profilePic}}" style="width:32px;  height:32px; border-radius:50%"></a></li>
                     <li id="registro">
                         <a class="nav-a" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">| Logout</a>
                     </li>
@@ -52,7 +56,9 @@
         </nav>
     </header>
     <main>
+        {{-- <marquee scrollamount="100"> --}}
         @yield('content')
+        {{-- </marquee > --}}
 </main>
 <footer>
     <ul>

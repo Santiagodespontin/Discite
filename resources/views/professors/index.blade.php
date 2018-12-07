@@ -1,4 +1,4 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 
 @section('content')
 <h2>Resultados de la busqueda
@@ -10,9 +10,9 @@
     <li>
         <h3>Nombre: {{ $professor->name }} {{ $professor->lastname }}</h3>
         <p>Zona: {{ $professor->getZona() }}<p>
-        <a href="{{ route('professor.show', $professor->id) }}">Ver</a>        
+        <a href="{{ route('professor.show', $professor->id) }}">Ver</a>
     </li>
-    @empty        
+    @empty
     <li>0 Results found </li>
     @endforelse
 </ul>

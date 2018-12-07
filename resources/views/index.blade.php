@@ -15,7 +15,7 @@
             <option value="2">Zona Oeste</option>
             <option value="3">Zona Este</option>
             <option value="4">Capital federal</option>
-        </select>    
+        </select>
         <input type="submit" value="Buscar" onclick="search(event)">
     </form>
 </section>
@@ -38,7 +38,7 @@
     <h3>Busca por categoria</h3>
     @foreach (App\Category::all() as $category)
     <article>
-        <a href="{{ url('/professor?q='.$category->name) }}">{{ $category->name }}</a> 
+        <a href="{{ url('/professor?q='.$category->name) }}">{{ $category->name }}</a>
     </article>
     @endforeach
 </section>
